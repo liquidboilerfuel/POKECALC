@@ -132,44 +132,44 @@ export default function App() {
   const [tipIndex, setTipIndex] = useState(0);
   const tips = [
     { 
-      title: "Mulligan Odds / マリガン率", 
-      en: "With 8 Basic Pokémon, you have a 40% chance of a mulligan. 12-14 is standard for stability.", 
-      jp: "たねポケモンが8枚だと約40%でマリガンになります。安定には12〜14枚が目安です。" 
+      title: "Mulligan Calculation / マリガン計算", 
+      jp: "「たねポケモン」をすべて選択して Draw Count を 7 にしてください。100からその「ANY 1+」の数値を引いた残りが、あなたのマリガン率です。", 
+      en: "Select all Basic Pokémon and set Draw to 7. Subtract the 'ANY 1+' value from 100 to find your exact Mulligan rate." 
+    },
+    { 
+      title: "Hand Disruption / 手札干渉の耐性", 
+      jp: "ジャッジマンなら Draw Count を 4 に、アンフェアスタンプなら 2 に設定。その状況で動ける札が何枚あるか確認しましょう。", 
+      en: "Set Draw to 4 for Judge or 2 for Unfair Stamp. Check how many 'outs' you have left in those situations." 
     },
     { 
       title: "Universal Input / リスト表示", 
-      en: "On JP official site, switch to 'List View' before copying (Ctrl+A).", 
-      jp: "公式サイトでは「リスト表示」に切り替えて全選択(Ctrl+A)すると、このツールで解析可能です。" 
+      jp: "公式サイトでは「リスト表示」に切り替えて全選択(Ctrl+A)すると、このツールで解析可能です。画像からはコピーできません。", 
+      en: "On JP official site, switch to 'List View' before copying (Ctrl+A). This tool parses text, not images." 
     },
     { 
       title: "Prize Card Risk / サイド落ち", 
-      en: "A 1-copy card has a 10% chance of being prized. A 2-copy card? Just 1%.", 
-      jp: "1枚差しのカードがサイドに落ちる確率は約10%。2枚入れると、両方落ちる確率は約1%まで激減します。" 
+      jp: "1枚差しのカードがサイドに落ちる確率は約10%。2枚入れると、両方が同時にサイドに落ちる確率は約1%まで激減します。", 
+      en: "A 1-copy card has a 10% chance of being prized. Two copies reduce the total 'prized' risk to just 1%." 
     },
     { 
       title: "Turn 1 Strategy / 先攻ドロー", 
-      en: "For a T1 sim, set Draw Count to 8 (7 hand + 1 draw).", 
-      jp: "先攻1回目の番のシミュレーションは「8枚」で計算しましょう。" 
+      jp: "先攻1回目の番のシミュレーションは「8枚」で計算しましょう（手札7枚＋山札から引く1枚）。", 
+      en: "For a T1 sim, set Draw Count to 8 (7 starting hand + 1 natural draw)." 
     },
     { 
       title: "First Turn Supporter / 先攻サポート", 
-      en: "The first player cannot use Supporter cards. Factor this in when calculating 'ANY' probabilities.", 
-      jp: "先攻1回目はサポートを使えません。「サポートを引ける確率」が「動ける確率」と直結しない点に注意。" 
-    },
-    { 
-      title: "Deck Thinning / 圧縮の効果", 
-      en: "Thinning 5 cards from your deck increases your chances of drawing a specific card by approx 3-5%.", 
-      jp: "グッズ等でデッキを5枚圧縮すると、次のドローで特定のカードを引く確率が3〜5%ほど上昇します。" 
-    },
-    { 
-      title: "Vip Battle Pass Logic / VIPパスの思考", 
-      en: "To have an 80% chance of drawing a Turn 1 item, you need at least 4 copies plus searching cards.", 
-      jp: "1ターン目に特定のカードを80%以上の確率で引くには、4枚投入＋ボール系での補完が必須です。" 
+      jp: "先攻1回目はサポートを使えません。「サポートを引ける確率」が「動ける確率」と直結しない点に注意。", 
+      en: "The first player cannot use Supporters. Don't confuse 'drawing a Supporter' with 'having a playable hand' on T1." 
     },
     { 
       title: "The 7-Card Rule / 期待値の壁", 
-      en: "To 'naturally' draw a card in your opening 7, you need 9 copies in a 60-card deck.", 
-      jp: "最初の7枚で「素引き」したいカードは、デッキに9枚以上入れると期待値が1を超えます。" 
+      jp: "最初の7枚で「素引き」したいカードは、デッキに9枚以上入れると期待値が1を超えます（60枚デッキの場合）。", 
+      en: "To statistically expect to see a card in your opening 7, you need at least 9 copies in your 60-card deck." 
+    },
+    { 
+      title: "Deck Thinning / 圧縮の価値", 
+      jp: "山札を5枚圧縮すると、次のドローで特定の1枚を引く確率が約3〜5%上がります。この積み重ねが終盤の勝率を変えます。", 
+      en: "Thinning 5 cards increases specific top-deck odds by 3-5%. These small gains win games in the long run." 
     }
   ];
 
