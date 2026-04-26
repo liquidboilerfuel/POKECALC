@@ -311,7 +311,7 @@ export default function App() {
                   </div>
                   <div className="space-y-1">
                     {cards.map((card) => (
-                      <div key={card.id} className={`flex items-center gap-2 p-1 pr-3 rounded-xl border-2 transition-all bg-white ${card.isSelected ? 'border-indigo-600 shadow-md scale-[1.02]' : 'border-transparent shadow-sm opacity-80'}`}>
+                      <div key={card.id} className={`flex items-center gap-2 p-1 pr-3 rounded-xl border-2 transition-all bg-white ${card.isSelected ? 'border-indigo-600 shadow-md' : 'border-transparent shadow-sm opacity-80'}`}>
                         <button onClick={() => setSelectedIds(prev => prev.includes(card.id) ? prev.filter(i => i !== card.id) : [...prev, card.id])} className="flex-1 flex items-center gap-3 p-3 text-left overflow-hidden">
                           <div className={`w-5 h-5 rounded-md border-2 shrink-0 flex items-center justify-center ${card.isSelected ? 'bg-indigo-600 border-indigo-600 text-white' : 'border-slate-200'}`}>
                             {card.isSelected && <CheckCircle2 size={12} strokeWidth={3}/>}
