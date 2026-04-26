@@ -21,6 +21,9 @@ export const metadata = {
     description: 'Calculate your win rate with precision. Created by TRON NEKO.',
     type: 'website',
   },
+  verification: {
+    google: 'Ccitf5XujBeKOKi5BYwnoVp1e2bvESUF5c5SGXiFTNs',
+  },
 };
 
 export default function RootLayout({
