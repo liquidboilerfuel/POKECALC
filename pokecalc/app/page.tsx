@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState, useMemo } from 'react';
-import { Card } from "@/components/ui/card";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Badge } from "@/components/ui/badge";
+import { Card } from "../components/ui/card";
+import { Textarea } from "../components/ui/textarea";
+import { Label } from "../components/ui/label";
+import { Badge } from "../components/ui/badge";
 import { CheckCircle2, Plus, Minus, Layers, Zap, AlertCircle, Copy, BookOpen, LayoutGrid, List, RefreshCcw} from 'lucide-react';
 
 // --- カテゴリーマッピング (Universal Display) ---
