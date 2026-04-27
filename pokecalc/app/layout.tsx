@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: 'POKECALC | 2026 Pokémon TCG Probability Calculator / ポケカ確率計算機',
+  title: 'POKECALC | PTCG Calc / ポケカ確率計算機',
   description: 'Instant probability for Mulligan, Prize cards, and recovery from Judge or Unfair Stamp. / マリガン率、サイド落ち、ジャッジマンやアンフェアスタンプからの復帰率を瞬時に計算。',
   keywords: ['ポケカ', '確率計算', 'Pokémon TCG', 'Probability', 'Mulligan', 'Judge', 'Unfair Stamp', 'ポケカ計算機', 'TRON NEKO'],
   openGraph: {

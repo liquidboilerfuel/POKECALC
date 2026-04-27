@@ -253,7 +253,16 @@ export default function App() {
                 <div>
                     <h3 className="text-[11px] font-black uppercase mb-1">How to Copy</h3>
                     <p className="text-[12px] text-slate-500 leading-tight">
-                      <strong>JP:</strong> 公式サイトで「画像表示」を「リスト表示」に切り替えて全選択(Ctrl+A)<br/>
+                      <strong>JP:</strong>
+                        <a 
+                          href="https://www.pokemon-card.com/deck/" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-indigo-600 font-bold underline hover:text-indigo-800 mx-1"
+                        >
+                          公式サイト
+                        </a>
+                        でデッキコード入力<br/>「画像表示」を「リスト表示」に切り替えて全選択(Ctrl+A)<br/>
                       <strong>EN:</strong> Supports PTCGL Export
                     </p>
                 </div>
