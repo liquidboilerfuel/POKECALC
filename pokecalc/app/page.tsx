@@ -5,7 +5,7 @@ import { Card } from "../components/ui/card";
 import { Textarea } from "../components/ui/textarea";
 import { Label } from "../components/ui/label";
 import { Badge } from "../components/ui/badge";
-import { CheckCircle2, Plus, Minus, Layers, Zap, AlertCircle, Copy, BookOpen, LayoutGrid, List, RefreshCcw} from 'lucide-react';
+import { CheckCircle2, Plus, Minus, Layers, Zap, AlertCircle, Copy, BookOpen, LayoutGrid, List, RefreshCcw, Share2} from 'lucide-react';
 
 // --- カテゴリーマッピング (Universal Display) ---
 const CATEGORY_MAP: Record<string, string> = {
@@ -70,7 +70,8 @@ const parseDeckToRaw = (text: string) => {
       return;
     }
     if (isStrictCategory(line)) {
-      currentCategory = line.match(/^(ポケモン|グッズ|ポケモンのどうぐ|サポート|スタジアム|エネルギー)/)![1];
+      currentCategory = line.match(/^(ポケモンのどうぐ|ポケモン|グッズ|サポート|スタジアム|エネルギー)/)![1];
+      buffer = []; // 前のカテゴリーの残骸を消去
       return;
     }
     if (isPtcglHeader(line)) {
@@ -130,6 +131,20 @@ export default function App() {
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [drawCount, setDrawCount] = useState(7);
   const [calcMode, setCalcMode] = useState<'any' | 'combo'>('any');
+
+  const handleShare = async () => {
+    const shareData = {
+      title: 'POKECALC',
+      text: 'Probability Calc for PTCG / ポケカの確率計算サイト',
+      url: window.location.href,
+    };
+    if (navigator.share) {
+      try { await navigator.share(shareData); } catch (err) { console.log('Share failed', err); }
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Link copied to clipboard! / リンクをコピーしました');
+    }
+  };
 
   // Tips state
   const [tipIndex, setTipIndex] = useState(0);
@@ -234,6 +249,15 @@ export default function App() {
                 <h1 className="text-5xl font-black tracking-tighter italic text-slate-900">POKECALC</h1>
                 <p className="text-[10px] font-bold text-slate-400 mt-1 uppercase tracking-widest">Supports JP Web & PTCGL formats. / 公式サイトのリストやPTCGLのエクスポートをそのまま貼り付け可能。</p>
             </div>
+            <button 
+              onClick={handleShare} 
+              className="mb-1 flex items-center gap-1.5 bg-indigo-50 border border-indigo-100 text-indigo-600 px-4 py-2 rounded-full hover:bg-indigo-100 transition-all shadow-sm active:scale-95 group"
+            >
+              <Share2 size={14} className="group-hover:animate-bounce" />
+              <div className="flex flex-col items-start line-height-tight">
+                <span className="text-[10px] font-black uppercase tracking-tighter">Please Share!!!!</span>
+              </div>
+            </button>
             <div className="flex bg-white p-1 rounded-2xl shadow-sm border border-slate-200 mt-4 md:mt-0">
                 <div className="px-6 py-2 border-r text-center">
                     <span className="text-2xl font-black tabular-nums">{totalCount}</span><br/>
@@ -262,7 +286,7 @@ export default function App() {
                         >
                           公式サイト
                         </a>
-                        でデッキコード入力<br/>「画像表示」を「リスト表示」に切り替えて全選択(Ctrl+A)<br/>
+                        でデッキコード入力<br/>→「画像表示」を「リスト表示」に切り替えて全選択(Ctrl+A)<br/>
                       <strong>EN:</strong> Supports PTCGL Export
                     </p>
                 </div>
