@@ -249,24 +249,27 @@ export default function App() {
                 <h1 className="text-5xl font-black tracking-tighter italic text-slate-900">POKECALC</h1>
                 <p className="text-[10px] font-bold text-slate-400 mt-1 uppercase tracking-widest">Supports JP Web & PTCGL formats. / 公式サイトのリストやPTCGLのエクスポートをそのまま貼り付け可能。</p>
             </div>
-            <button 
-              onClick={handleShare} 
-              className="mb-1 flex items-center gap-1.5 bg-indigo-50 border border-indigo-100 text-indigo-600 px-4 py-2 rounded-full hover:bg-indigo-100 transition-all shadow-sm active:scale-95 group"
-            >
-              <Share2 size={14} className="group-hover:animate-bounce" />
-              <div className="flex flex-col items-start line-height-tight">
-                <span className="text-[10px] font-black uppercase tracking-tighter">Please Share!!!!</span>
+            <div className="flex items-stretch gap-3 w-full md:w-auto justify-end">
+              {/* Share Button: スマホでは数字の左隣、PCではその配置を維持しつつ調整 */}
+              <button 
+                onClick={handleShare} 
+                className="flex items-center gap-1.5 bg-indigo-50 border border-indigo-100 text-indigo-600 px-3 py-3 md:py-2 rounded-2xl hover:bg-indigo-100 transition-all shadow-sm active:scale-95 group"
+              >
+                <Share2 size={16} className="group-hover:animate-bounce" />
+                <span className="hidden md:inline text-[10px] font-black uppercase tracking-tighter">Share</span>
+              </button>
+
+              {/* Counter Cards */}
+              <div className="flex bg-white p-1 rounded-2xl shadow-sm border border-slate-200">
+                <div className="px-5 md:px-6 py-2 border-r text-center">
+                  <span className="text-xl md:text-2xl font-black tabular-nums leading-none">{totalCount}</span><br/>
+                  <span className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase">Deck</span>
+                </div>
+                <div className="px-5 md:px-6 py-2 text-center">
+                  <span className="text-xl md:text-2xl font-black text-indigo-600 tabular-nums leading-none">{selectedCards.length}</span><br/>
+                  <span className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase">Selected</span>
+                </div>
               </div>
-            </button>
-            <div className="flex bg-white p-1 rounded-2xl shadow-sm border border-slate-200 mt-4 md:mt-0">
-                <div className="px-6 py-2 border-r text-center">
-                    <span className="text-2xl font-black tabular-nums">{totalCount}</span><br/>
-                    <span className="text-[10px] font-black text-slate-400 uppercase">Deck</span>
-                </div>
-                <div className="px-6 py-2 text-center">
-                    <span className="text-2xl font-black text-indigo-600 tabular-nums">{selectedCards.length}</span><br/>
-                    <span className="text-[10px] font-black text-slate-400 uppercase">Selected</span>
-                </div>
             </div>
         </header>
 
