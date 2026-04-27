@@ -66,6 +66,9 @@ const parseDeckToRaw = (text: string) => {
   const isPtcglHeader = (str: string) => /^(Pokémon|Trainer|Energy|Total Cards):/i.test(str);
 
   lines.forEach((line) => {
+    if (line.includes('デッキコード')) {
+      return;
+    }
     if (isStrictCategory(line)) {
       currentCategory = line.match(/^(ポケモン|グッズ|ポケモンのどうぐ|サポート|スタジアム|エネルギー)/)![1];
       return;
