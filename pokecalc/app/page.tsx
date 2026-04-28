@@ -371,7 +371,22 @@ export default function App() {
             <Card className="rounded-[3rem] shadow-2xl overflow-hidden h-[400px] bg-[#0F172A] ring-8 ring-white">
               <Textarea
                 className="h-full border-none p-8 font-mono text-[13px] text-indigo-300 bg-transparent resize-none focus-visible:ring-0"
-                placeholder="Paste deck list..."
+                placeholder={`(Example / 例)
+ポケモン (21)
+ドラメシヤ
+M2a
+211/193
+4枚
+ドロンチ
+M2a
+...
+©Pokémon/Nintendo... ← OK
+※サイトのメニューやコピーライト等の余計な文章が混ざっても、自動でカード名と枚数だけを抜き出します
+============================
+Pokémon: 10
+4 Dreepy ASC 247
+4 Drakloak ASC 248
+...`}
                 value={deckText}
                 onChange={(e) => setDeckText(e.target.value)}
               />
@@ -495,14 +510,14 @@ export default function App() {
                 {/* サイド落ちリスクバッジ */}
                 {prizeRisk !== null && (
                   <div className={`flex items-center justify-between bg-white rounded-3xl px-6 py-4 border-2 transition-all ${prizeRisk >= 10 ? 'border-red-400 bg-red-50 shadow-[0_0_20px_rgba(244,63,94,0.1)]' :
-                      prizeRisk >= 0.8 ? 'border-amber-300 bg-amber-50/40' :
-                        'border-emerald-300 bg-emerald-50/40'
+                    prizeRisk >= 0.8 ? 'border-amber-300 bg-amber-50/40' :
+                      'border-emerald-300 bg-emerald-50/40'
                     }`}>
                     <div className="space-y-0.5">
                       <div className="flex items-center gap-1.5">
                         <div className={`w-2 h-2 rounded-full ${prizeRisk >= 10 ? 'bg-red-500 animate-pulse' :
-                            prizeRisk >= 0.8 ? 'bg-amber-500' :
-                              'bg-emerald-500'
+                          prizeRisk >= 0.8 ? 'bg-amber-500' :
+                            'bg-emerald-500'
                           }`} />
                         <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">
                           Prize Lock Risk / サイド落ち
@@ -524,8 +539,8 @@ export default function App() {
                     <div className="text-right">
                       <div className="flex items-baseline justify-end gap-0.5">
                         <span className={`text-4xl font-black tabular-nums tracking-tighter ${prizeRisk >= 10 ? 'text-red-600' :
-                            prizeRisk >= 0.8 ? 'text-amber-700' :
-                              'text-emerald-600'
+                          prizeRisk >= 0.8 ? 'text-amber-700' :
+                            'text-emerald-600'
                           }`}>
                           {prizeRisk.toFixed(prizeRisk < 0.1 ? 2 : 1)}
                         </span>
@@ -533,8 +548,8 @@ export default function App() {
                       </div>
 
                       <div className={`text-[10px] font-black px-3 py-1 rounded-full inline-block mt-1 uppercase shadow-sm ${prizeRisk >= 10 ? 'bg-red-500 text-white' :
-                          prizeRisk >= 0.8 ? 'bg-amber-100 text-amber-700' :
-                            'bg-emerald-500 text-white'
+                        prizeRisk >= 0.8 ? 'bg-amber-100 text-amber-700' :
+                          'bg-emerald-500 text-white'
                         }`}>
                         {prizeRisk >= 10 ? 'Critical' :
                           prizeRisk >= 0.8 ? 'Risky' :
