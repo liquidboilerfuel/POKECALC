@@ -143,6 +143,31 @@ export default function App() {
   const [customCounts, setCustomCounts] = useState<Record<string, number>>({});
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [drawCount, setDrawCount] = useState(7);
+
+  React.useEffect(() => {
+    // ページ読み込み時にLocalStorageから復元
+    const savedDeck = localStorage.getItem('pokecalc_deck_text');
+    const savedIds = localStorage.getItem('pokecalc_selected_ids');
+    const savedCounts = localStorage.getItem('pokecalc_custom_counts');
+
+    if (savedDeck) setDeckText(savedDeck);
+    if (savedIds) setSelectedIds(JSON.parse(savedIds));
+    if (savedCounts) setCustomCounts(JSON.parse(savedCounts));
+  }, []);
+
+  React.useEffect(() => {
+    // 状態が変化するたびにLocalStorageに保存
+    localStorage.setItem('pokecalc_deck_text', deckText);
+  }, [deckText]);
+
+  React.useEffect(() => {
+    localStorage.setItem('pokecalc_selected_ids', JSON.stringify(selectedIds));
+  }, [selectedIds]);
+
+  React.useEffect(() => {
+    localStorage.setItem('pokecalc_custom_counts', JSON.stringify(customCounts));
+  }, [customCounts]);
+
   const [calcMode, setCalcMode] = useState<'any' | 'combo'>('any');
   const [tipIndex, setTipIndex] = useState(0);
 
@@ -366,7 +391,20 @@ export default function App() {
           <div className="lg:col-span-4 space-y-4">
             <Label className="text-[11px] font-black uppercase tracking-widest flex justify-between px-2 text-slate-400">
               <span>1. Paste Deck List / デッキ登録</span>
-              <button onClick={() => { setDeckText(''); setSelectedIds([]); setCustomCounts({}); }} className="text-rose-500 text-[10px] font-black hover:underline">Clear</button>
+              <button
+                onClick={() => {
+                  setDeckText('');
+                  setSelectedIds([]);
+                  setCustomCounts({});
+                  // 特定のデータのみを削除（推奨）
+                  localStorage.removeItem('pokecalc_deck_text');
+                  localStorage.removeItem('pokecalc_selected_ids');
+                  localStorage.removeItem('pokecalc_custom_counts');
+                }}
+                className="text-rose-500 text-[10px] font-black hover:underline"
+              >
+                Clear
+              </button>
             </Label>
             <Card className="rounded-[3rem] shadow-2xl overflow-hidden h-[400px] bg-[#0F172A] ring-8 ring-white">
               <Textarea
@@ -524,7 +562,7 @@ Pokémon: 10
                         </p>
                       </div>
                       <p className="text-[13px] font-black text-slate-800">
-                        サイド全落ちの<span className={prizeRisk >= 10 ? 'text-red-600' : prizeRisk >= 0.8 ? 'text-amber-600' : 'text-emerald-600'}>確率</span>
+                        サイド落ちの確率
                       </p>
                       <div className="mt-1">
                         <p className="text-[8px] font-bold text-slate-400 leading-tight">
