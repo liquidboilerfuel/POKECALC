@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'TRON NEKO' }],
   openGraph: {
-    title: 'POKECALC | 2026 Pokémon TCG Probability Calculator',
+    title: 'POKECALC | Pokémon TCG Probability Calculator',
     description: 'Calculate your win rate with precision. Analyze your deck list for optimal consistency. Created by TRON NEKO.',
     url: 'https://pokecalc-ptcg.vercel.app/',
     siteName: 'POKECALC',
