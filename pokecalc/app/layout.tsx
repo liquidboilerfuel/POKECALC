@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   keywords: [
     'ポケカ', '確率計算', 'Pokémon TCG', 'Probability', 'Mulligan', 'Judge', 'Unfair Stamp',
     'ポケカ計算機', 'サイド落ち', 'マリガン', 'デッキ圧縮', 'PTCGL', 'ポケモンカード',
-    'TRON NEKO', 'PokeCalc', 'ぽけかるく', 'ポケカルク', 'PTCG'
+    'TRON NEKO', 'PokeCalc', 'ぽけかるく', 'ポケカルク', 'PTCG','ポケカ勝率', 'デッキ構築', 'ポケモンカード計算', '期待値', 'ポケカ初心者', 'デッキ診断'
   ],
   authors: [{ name: 'TRON NEKO' }],
   openGraph: {
